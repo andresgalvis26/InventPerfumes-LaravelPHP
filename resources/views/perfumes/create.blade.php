@@ -11,7 +11,10 @@
 
     <h2 class="text-4xl text-center py-4 mb-4 font-semibold">Añadir Nuevo Perfume</h2>
 
-    <input  type="text" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" placeholder="Nombre del Perfume" name="namePerfume" required pattern="[A-Za-z] {3, 30}" title="Letras mayúsculas o minúsculas. Min: 3. Max: 40">
+    <input  type="text" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" placeholder="Nombre del Perfume" name="namePerfume" required pattern="[A-Za-z0-9] {3, 40}" title="Letras mayúsculas o minúsculas. Min: 3. Max: 40">
+    @error('namePerfume')
+        {{ $message }}
+    @enderror
     
 
     <select name="gender" id="" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" required>
@@ -20,6 +23,9 @@
         <option value="Hombres">Hombres</option>
         <option value="Mujeres">Mujeres</option>
     </select>
+    @error('gender')
+    {{ $message }}
+    @enderror
 
     <select name="designer" id="" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" required>
         <option value="" autofocus>Seleccione el diseñador/a</option>
@@ -61,6 +67,9 @@
         <option value="Victoria Secret">Victoria Secret</option>
         <option value="Victorinox">Victorinox</option>
     </select>
+    @error('designer')
+    {{ $message }}
+    @enderror
 
     <select name="olfactoryFamily" id="olfactoryFamily" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" required>
         <option value="" autofocus>Seleccione la familia olfativa</option>
@@ -75,15 +84,27 @@
         <option value="Amaderada Especiada">Amaderada Especiada</option>
         <option value="Cítrica">Cítrica</option>
     </select>
+    @error('olfactoryFamily')
+    {{ $message }}
+    @enderror
 
     <label for="pureEssence" class="my-2 w-full text-md font-semibold">Esencia Pura (en ml):</label>
-    <input type="text" name="pureEssence" id="pureEssence" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" placeholder="Ingrese la cantidad de esencia" required pattern="[0-9]{1,3}" >
+    <input type="text" name="pureEssence" id="pureEssence" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" placeholder="Ingrese la cantidad de esencia"  pattern="[0-9]{1,3}" required>
+    @error('pureEssence')
+    {{ $message }}
+    @enderror
 
     <label for="fabricationDate" class="my-2 w-full text-md font-semibold">Fecha de Fabricación:</label>
     <input type="date" name="fabricationDate" id="fabricationDate" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" min="1990-01-01" max="2050-12-31" required>
+    @error('fabricationDate')
+    {{ $message }}
+    @enderror
 
     <label for="expirationDate" class="my-2 w-full text-md font-semibold">Fecha de Vencimiento:</label>
     <input type="date" name="expirationDate" id="expirationDate" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" min="1990-01-01" max="2050-12-31" required>
+    @error('expirationDate')
+    {{ $message }}
+    @enderror
 
 
     <button type="submit" class="my-5 text-xl w-full bg-[#f2b785] p-2 font-semibold rounded text-black hover:bg-[#d16374] hover:text-white">Agregar</button>

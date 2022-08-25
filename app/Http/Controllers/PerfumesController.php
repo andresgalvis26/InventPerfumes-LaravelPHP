@@ -26,6 +26,17 @@ class PerfumesController extends Controller
     // @ Functión store
     public function store(Request $request) {
 
+        // * Validación a nivel backend * //
+        $request->validate([
+            'namePerfume' => 'required | min:3 | max:40 ',
+            'gender' => 'required',
+            'designer' => 'required',
+            'olfactoryFamily' => 'required',
+            'pureEssence' => 'required',
+            'fabricationDate' => 'required',
+            'expirationDate' => 'required'
+        ]);
+
         $perfume = new Perfume();
         $perfume->namePerfume = $request->namePerfume;
         $perfume->gender = $request->gender;
@@ -57,6 +68,19 @@ class PerfumesController extends Controller
     public function update(Request $request, $id) {
         
         $perfume = Perfume::find($id);
+
+        // * Validación a nivel backend * //
+        $request->validate([
+            'namePerfume' => 'required | min:3 | max:40 ',
+            'gender' => 'required',
+            'designer' => 'required',
+            'olfactoryFamily' => 'required',
+            'pureEssence' => 'required',
+            'fabricationDate' => 'required',
+            'expirationDate' => 'required'
+        ]);
+
+        
         
         $perfume->update($request->all());
         
