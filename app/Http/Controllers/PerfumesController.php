@@ -49,16 +49,18 @@ class PerfumesController extends Controller
         $perfume = Perfume::find($id);
 
         return view('perfumes.edit', compact('perfume'));
-
+        
     }
-
-
+    
+    
     // @ Función update
     public function update(Request $request, $id) {
-
+        
         $perfume = Perfume::find($id);
-
+        
         $perfume->update($request->all());
+        
+        Alert::success('Actualizado', 'El perfume ha sido actualizado con éxito.');
 
         return redirect()->route('perfumes.index');
     }
@@ -68,6 +70,11 @@ class PerfumesController extends Controller
     public function destroy($id) {
 
         $perfume = Perfume::find($id);
+
+        // Alert::warning('¿Estás seguro que quieres eliminar?', 'Question Message');
+
+        
+        alert()->question('Are you sure?','You won\'t be able to revert this!')->showCancelButton()->showConfirmButton()->focusConfirm(true);
 
         $perfume->delete();
 

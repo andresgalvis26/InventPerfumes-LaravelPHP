@@ -12,17 +12,17 @@
 
     <h2 class="text-4xl text-center py-4 mb-4 font-semibold">Editar información del Perfume {{ $perfume->namePerfume }}</h2>
 
-    <input class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" type="text" name="namePerfume" value="{{ $perfume->namePerfume }}">
+    <input class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" type="text" name="namePerfume" value="{{ $perfume->namePerfume }}" required pattern="[A-Za-z] {3, 30}" title="Letras mayúsculas o minúsculas. Min: 3. Max: 40">
     
 
-    <select name="gender" id="" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900">
+    <select name="gender" id="" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" required>
         <option value="{{ $perfume->gender }}" autofocus>{{$perfume->gender}}</option>
         <option value="Unisex">Unisex</option>
         <option value="Hombres">Hombres</option>
         <option value="Mujeres">Mujeres</option>
     </select>
 
-    <select name="designer" id="" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900">
+    <select name="designer" id="" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" required>
         <option value="{{ $perfume->designer}}" autofocus>{{ $perfume->designer}}</option>
         <option value="Antonio Banderas">Antonio Banderas</option>
         <option value="Britney Spears">Britney Spears</option>
@@ -63,7 +63,7 @@
         <option value="Victorinox">Victorinox</option>
     </select>
 
-    <select name="olfactoryFamily" id="olfactoryFamily" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900">
+    <select name="olfactoryFamily" id="olfactoryFamily" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" required>
         <option value="{{ $perfume->designer}}" autofocus>{{ $perfume->olfactoryFamily}}</option>
         <option value="Floral">Floral</option>
         <option value="Ámbar Floral">Ámbar Floral</option>
@@ -78,17 +78,19 @@
     </select>
 
     <label for="pureEssence" class="my-2 w-full text-lg font-semibold">Esencia Pura (en ml):</label>
-    <input type="number" name="pureEssence" id="pureEssence" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" value="{{ $perfume->pureEssence}}">
+    <input type="text" name="pureEssence" id="pureEssence" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" value="{{ $perfume->pureEssence}}" required pattern="[0-9]{1,3}">
 
     <label for="fabricationDate" class="my-2 w-full text-lg font-semibold">Fecha de Fabricación:</label>
-    <input type="date" name="fabricationDate" id="fabricationDate" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" value="{{ $perfume->fabricationDate}}">
+    <input type="date" name="fabricationDate" id="fabricationDate" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" value="{{ $perfume->fabricationDate}}" min="1990-01-01" max="2050-12-31">
 
     <label for="expirationDate" class="my-2 w-full text-lg font-semibold">Fecha de Vencimiento:</label>
-    <input type="date" name="expirationDate" id="expirationDate" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" value="{{ $perfume->expirationDate}}">
+    <input type="date" name="expirationDate" id="expirationDate" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" value="{{ $perfume->expirationDate}}" min="1990-01-01" max="2050-12-31">
 
 
     <button type="submit" class="my-5 text-xl w-full bg-[#f2b785] p-2 font-semibold rounded text-black hover:bg-[#d16374] hover:text-white">Actualizar Información</button>
 
 </form>
+
+@include('sweetalert::alert')
 
 @endsection

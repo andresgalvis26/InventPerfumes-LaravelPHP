@@ -11,17 +11,17 @@
 
     <h2 class="text-4xl text-center py-4 mb-4 font-semibold">Añadir Nuevo Perfume</h2>
 
-    <input class="my-2 w-full bg-gray-200 p-2 text-md rounded placeholder-gray-900" placeholder="Nombre del Perfume" type="text" name="namePerfume">
+    <input  type="text" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" placeholder="Nombre del Perfume" name="namePerfume" required pattern="[A-Za-z] {3, 30}" title="Letras mayúsculas o minúsculas. Min: 3. Max: 40">
     
 
-    <select name="gender" id="" class="my-2 w-full bg-gray-200 p-2 text-md rounded placeholder-gray-900">
+    <select name="gender" id="" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" required>
         <option value="" autofocus>Seleccione el género</option>
         <option value="Unisex">Unisex</option>
         <option value="Hombres">Hombres</option>
         <option value="Mujeres">Mujeres</option>
     </select>
 
-    <select name="designer" id="" class="my-2 w-full bg-gray-200 p-2 text-md rounded placeholder-gray-900">
+    <select name="designer" id="" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" required>
         <option value="" autofocus>Seleccione el diseñador/a</option>
         <option value="Antonio Banderas">Antonio Banderas</option>
         <option value="Britney Spears">Britney Spears</option>
@@ -62,7 +62,7 @@
         <option value="Victorinox">Victorinox</option>
     </select>
 
-    <select name="olfactoryFamily" id="olfactoryFamily" class="my-2 w-full bg-gray-200 p-2 text-md rounded placeholder-gray-900">
+    <select name="olfactoryFamily" id="olfactoryFamily" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" required>
         <option value="" autofocus>Seleccione la familia olfativa</option>
         <option value="Floral">Floral</option>
         <option value="Ámbar Floral">Ámbar Floral</option>
@@ -77,13 +77,13 @@
     </select>
 
     <label for="pureEssence" class="my-2 w-full text-md font-semibold">Esencia Pura (en ml):</label>
-    <input type="number" name="pureEssence" id="pureEssence" class="my-2 w-full bg-gray-200 p-2 text-md rounded placeholder-gray-900" placeholder="Ingrese la cantidad de esencia">
+    <input type="text" name="pureEssence" id="pureEssence" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" placeholder="Ingrese la cantidad de esencia" required pattern="[0-9]{1,3}" >
 
     <label for="fabricationDate" class="my-2 w-full text-md font-semibold">Fecha de Fabricación:</label>
-    <input type="date" name="fabricationDate" id="fabricationDate" class="my-2 w-full bg-gray-200 p-2 text-md rounded placeholder-gray-900">
+    <input type="date" name="fabricationDate" id="fabricationDate" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" min="1990-01-01" max="2050-12-31" required>
 
     <label for="expirationDate" class="my-2 w-full text-md font-semibold">Fecha de Vencimiento:</label>
-    <input type="date" name="expirationDate" id="expirationDate" class="my-2 w-full bg-gray-200 p-2 text-md rounded placeholder-gray-900">
+    <input type="date" name="expirationDate" id="expirationDate" class="my-2 w-full bg-gray-200 p-2 text-lg rounded placeholder-gray-900" min="1990-01-01" max="2050-12-31" required>
 
 
     <button type="submit" class="my-5 text-xl w-full bg-[#f2b785] p-2 font-semibold rounded text-black hover:bg-[#d16374] hover:text-white">Agregar</button>
